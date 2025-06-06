@@ -1,15 +1,16 @@
 import { FC } from 'react';
 import '../../../shared/assets/ui/styles/limits.scss';
 import './gender-nav.scss';
-import { landingMan, landingWoman } from '../../../shared/assets';
+import landingWoman from '/assets/img/land-wmn.png';
+import landingMan from '/assets/img/land-man.png';
 import { Link } from 'react-router-dom';
 
-export const GenderNav: FC = () => {
-  const genders: { gender: 'Мужчинам' | 'Женщинам'; imageUrl: string; pos: 'right' | 'left' }[] = [
-    { gender: 'Мужчинам', imageUrl: landingMan, pos: 'right' },
-    { gender: 'Женщинам', imageUrl: landingWoman, pos: 'left' },
-  ];
+const genders: { gender: 'Мужчинам' | 'Женщинам'; imageUrl: string; pos: 'right' | 'left' }[] = [
+  { gender: 'Женщинам', imageUrl: landingWoman, pos: 'right' },
+  { gender: 'Мужчинам', imageUrl: landingMan, pos: 'left' },
+];
 
+export const GenderNav: FC = () => {
   return (
     <nav className="gender-nav">
       <ul className="gender-nav__list">

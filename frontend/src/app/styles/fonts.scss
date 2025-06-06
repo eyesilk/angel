@@ -1,27 +1,62 @@
 @font-face {
-  font-family: 'Gothic60';
-  src: url('../fonts/Gothic60-Regular.otf') format('opentype');
-  font-weight: normal;
+  font-family: 'vocal';
+  src: url('../fonts/Vocal-Thin.ttf') format('opentype');
+  font-weight: 200;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Inter';
-  src: url('../fonts/Inter_28pt-Regular.ttf') format('opentype');
-  font-weight: normal;
+  font-family: 'vocal';
+  src: url('../fonts/Vocal-ExtraLight.ttf') format('opentype');
+  font-weight: 200;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Gilroy-light';
-  src: url('../fonts/Gilroy-Light.woff') format('opentype');
-  font-weight: normal;
+  font-family: 'vocal';
+  src: url('../fonts/Vocal-Light.ttf') format('opentype');
+  font-weight: 300;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Gilroy-bold';
-  src: url('../fonts/Gilroy-ExtraBold.woff') format('opentype');
-  font-weight: normal;
+  font-family: 'vocal';
+  src: url('../fonts/Vocal-Regular.ttf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'vocal';
+  src: url('../fonts/Vocal-Medium.ttf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'vocal';
+  src: url('../fonts/Vocal-SemiBold.ttf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'vocal';
+  src: url('../fonts/Vocal-Bold.ttf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'vocal';
+  src: url('../fonts/Vocal-ExtraBold.ttf') format('opentype');
+  font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'vocal';
+  src: url('../fonts/Vocal-Black.ttf') format('opentype');
+  font-weight: 900;
   font-style: normal;
 }

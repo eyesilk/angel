@@ -13,19 +13,24 @@
   padding: 40px 0;
 
   &__wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     width: 630px;
     background-color: #ffffff;
     padding: 40px 30px;
-    height: 100%;
-    max-height: 559px;
+    height: fit-content;
     overflow-y: hidden;
     margin: 0 21px;
+    border-radius: 20px;
 
     @media (max-width: 1100px) {
       max-height: 465px;
       padding: 30px 25px;
       width: 500px;
     }
+
     @media (max-width: 500px) {
       max-height: 335px;
       padding: 20px 15px;
@@ -35,20 +40,23 @@
 
   &__title {
     display: flex;
+    font-weight: 500;
+    width: 100%;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: center;
     margin-bottom: 50px;
 
     @media (max-width: 500px) {
       margin-bottom: 20px;
     }
 
-    & > h2 {
+    &>h2 {
       font-size: 25px;
 
       @media (max-width: 1100px) {
         font-size: 22px;
       }
+
       @media (max-width: 500px) {
         font-size: 17px;
       }
@@ -64,12 +72,15 @@
     display: flex;
     width: 100%;
     justify-content: space-between;
-    padding-bottom: 15px;
-    border-bottom: 1px solid $eerie;
-    margin-bottom: 30px;
+    padding-top: 15px;
+    margin-bottom: 50px;
+    border-top: 1px solid $eerie;
+    margin-top: 30px;
+
     @media (max-width: 1100px) {
       margin-bottom: 25px;
     }
+
     @media (max-width: 500px) {
       margin-bottom: 15px;
       padding-bottom: 5px;
@@ -77,10 +88,13 @@
 
     & button {
       text-transform: uppercase;
-      & > span {
+
+      &>span {
         font-size: 22px;
+
         @media (max-width: 1100px) {
           font-size: 19px;
+
           @media (max-width: 500px) {
             font-size: 14px;
           }
@@ -89,35 +103,76 @@
     }
   }
 
+  &__method-button {
+    color: $stardust;
+    font-size: 20px;
+    transition: color 0.1s ease;
+
+    @media (max-width: 1100px) {
+      font-size: 14px;
+    }
+
+    &:hover {
+      color: $eerie;
+    }
+
+    &>a {
+      text-transform: uppercase;
+      transition: color 0.15s ease;
+      text-decoration: none;
+      color: $stardust;
+
+      &:hover {
+        color: $eerie;
+      }
+    }
+  }
+
+  &__method-button_active {
+    color: $eerie;
+    text-decoration: underline;
+  }
+
   &__form {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
     overflow-x: auto;
-    max-height: calc(100% - 150px);
-    display: block;
+    width: 100%;
 
     @media (max-width: 1100px) {
       max-height: calc(100% - 100px);
     }
 
-    & > label {
+  }
+
+  &__form-input-wrapper {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    column-gap: 15px;
+    margin-bottom: 30px;
+    border-bottom: 1px solid $eerie;
+    padding-bottom: 15px;
+
+    &>label {
       font-size: 20px;
-      margin-bottom: 15px;
+      font-weight: 300;
+
       @media (max-width: 1100px) {
         font-size: 17px;
       }
+
       @media (max-width: 500px) {
         font-size: 15px;
       }
     }
 
-    & > input {
-      min-height: 60px;
+    &>input {
       width: 100%;
-      border: 1px solid $eerie;
-      margin-bottom: 30px;
+      font-weight: 300;
       font-size: 20px;
-      text-transform: uppercase;
       border-radius: 0;
 
       @media (max-width: 1100px) {
@@ -136,20 +191,23 @@
         min-height: 50px;
         margin-bottom: 25px;
       }
+
       @media (max-width: 500px) {
         min-height: 40px;
         margin-bottom: 15px;
       }
+
     }
 
-    & > button {
+    &>button {
       margin-top: 15px;
+
       @media (max-width: 1100px) {
         margin-top: 10px;
       }
     }
 
-    & > p {
+    &>p {
       color: $stardust;
       line-height: 125%;
       margin-bottom: 5px;
@@ -158,22 +216,49 @@
       @media (max-width: 1100px) {
         font-size: 15px;
       }
+
       @media (max-width: 500px) {
         font-size: 12px;
       }
 
-      & > strong {
+      &>strong {
         color: $stardust;
       }
-      & > a {
+
+      &>a {
         color: $stardust;
         text-decoration: underline;
       }
     }
   }
 
+  &__form-button {
+    width: fit-content;
+    min-width: 100px;
+    min-height: 60px;
+    margin-top: 30px;
+    font-weight: 700;
+    font-size: 30px;
+    text-transform: uppercase;
+    border-top: 2px solid $eerie;
+    transition: all 0.15s;
+    cursor: pointer;
+
+    &:hover {
+      opacity: 0.6;
+    }
+
+    &:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      text-decoration: none;
+      border-color: transparent;
+    }
+  }
+
   &__message {
     font-size: 15px;
+    border-radius: 10px;
     display: block;
     width: 100%;
     background-color: $eerie;
@@ -185,6 +270,7 @@
     @media (max-width: 1100px) {
       font-size: 12px;
     }
+
     @media (max-width: 500px) {
       font-size: 10px;
     }
@@ -194,15 +280,18 @@
     opacity: 0;
     transform: scale(0.8);
   }
+
   &__animate-enter-active {
     opacity: 1;
     transform: scale(1);
     transition: all 200ms ease;
   }
+
   &__animate-exit {
     opacity: 1;
     transform: scale(1);
   }
+
   &__animate-exit-active {
     opacity: 0;
     transform: scale(0.8);

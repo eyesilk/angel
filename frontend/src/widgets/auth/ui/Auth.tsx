@@ -8,12 +8,13 @@ import { UiButtonDefault } from '../../../shared/button-default';
 import { UiDotsLoader } from '../../../shared/dots-loader';
 import { CSSTransition } from 'react-transition-group';
 
+const methodMenu: string[] = ['Войти', 'Создать аккаунт'];
+
 export const Auth: FC = () => {
   const modalRef = useRef<HTMLDivElement>(null);
   const isAuthOpen = useAuthStore((state) => state.isAuthOpen);
   const setIsAuthOpen = useAuthStore((state) => state.setIsAuthOpen);
   const [selectedMethod, setSelectedMethod] = useState<string>('Войти');
-  const methodMenu: string[] = ['Войти', 'Создать аккаунт'];
 
   const { message: supMessage, isPending: supPending, handleRegisterSubmit } = useRegisterSubmit();
   const {
@@ -52,45 +53,48 @@ export const Auth: FC = () => {
             <ul className="auth__method">
               {methodMenu.map((method, index) => (
                 <li key={index}>
-                  <UiButtonGray
+                  <button
                     onClick={() => setSelectedMethod(method)}
-                    active={method === selectedMethod}
+                    className={`auth__method-button ${selectedMethod === method && 'auth__method-button_active'}`}
                   >
                     {method}
-                  </UiButtonGray>
+                  </button>
                 </li>
               ))}
             </ul>
             {selectedMethod === 'Войти' ? (
               <form className="auth__form" key="login" onSubmit={(e) => handleLoginSubmit(e)}>
                 {sinMessage && <span className="auth__message">{sinMessage}</span>}
-                <label htmlFor="email">Email</label>
-                <input type="email" id="email" name="email" required />
-                <label htmlFor="password">Пароль</label>
-                <input type="password" id="password" name="password" required />
-                <UiButtonDefault type="submit" disabled={sinPending && true}>
-                  {sinPending ? <UiDotsLoader color="white" /> : 'Войти'}
-                </UiButtonDefault>
+                <div className="auth__form-input-wrapper">
+                  <label htmlFor="email">Email</label>
+                  <input type="email" id="email" name="email" required />
+                </div>
+                <div className="auth__form-input-wrapper">
+                  <label htmlFor="password">Пароль</label>
+                  <input type="password" id="password" name="password" required />
+                </div>
+                <button className="auth__form-button" type="submit" disabled={sinPending && true}>
+                  {sinPending ? <UiDotsLoader color="black" /> : 'Войти'}
+                </button>
               </form>
             ) : (
               <form className="auth__form" key="register" onSubmit={(e) => handleRegisterSubmit(e)}>
                 {supMessage && <span className="auth__message">{supMessage}</span>}
-                <label htmlFor="username">Имя</label>
-                <input type="username" id="username" name="username" required />
-                <label htmlFor="email">Email</label>
-                <input type="email" id="email" name="email" required />
-                <label htmlFor="password">Пароль</label>
-                <input type="password" id="password" name="password" required />
-
-                <p>
-                  Регистрируясь, вы вступаете в  <strong>программу лояльности</strong> и
-                  соглашаетесь с документами <a href="/">«Условия пользования»</a> и{' '}
-                  <a href="/">«Политика конфиденциальности»</a>.
-                </p>
-
-                <UiButtonDefault type="submit" disabled={supPending && true}>
-                  {supPending ? <UiDotsLoader color="white" /> : 'Зарегистрироваться'}
-                </UiButtonDefault>
+                <div className="auth__form-input-wrapper">
+                  <label htmlFor="username">Имя</label>
+                  <input type="username" id="username" name="username" required />
+                </div>
+                <div className="auth__form-input-wrapper">
+                  <label htmlFor="email">Email</label>
+                  <input type="email" id="email" name="email" required />
+                </div>
+                <div className="auth__form-input-wrapper">
+                  <label htmlFor="password">Пароль</label>
+                  <input type="password" id="password" name="password" required />
+                </div>
+                <button type="submit" className="auth__form-button" disabled={supPending && true}>
+                  {supPending ? <UiDotsLoader color="black" /> : 'Зарегистрироваться'}
+                </button>
               </form>
             )}
           </div>

@@ -89,10 +89,6 @@ export const AppRouter: FC = () => {
     }
   }, [userData, isSuccess, isLoading, isError]);
 
-  if (isLoading) {
-    return <PageLoading />;
-  }
-
   return (
     <Suspense fallback={<PageLoading />}>
       <Routes>

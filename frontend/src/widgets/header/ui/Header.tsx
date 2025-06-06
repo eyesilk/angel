@@ -1,7 +1,11 @@
 import { FC, useRef, useState } from 'react';
 import './header.scss';
 import { UiButtonWrapper } from '../../../shared/button-wrapper';
-import { accountIco, burgerBtnIco, logo, productsIco } from '../../../shared/assets';
+import logo from '/assets/icons/logo.svg';
+import accountIco from '/assets/icons/account.svg';
+import burgerBtnIco from '/assets/icons/burger.svg';
+import productsIco from '/assets/icons/bag.svg';
+import favIco from '/assets/icons/favorite.svg';
 import { Link } from 'react-router-dom';
 import '../../../shared/assets/ui/styles/limits.scss';
 import { PopupNav } from './PopupNav';
@@ -36,30 +40,36 @@ export const Header: FC = () => {
           </UiButtonWrapper>
           <nav className="header__navbar">
             <ul>
-              {/* <li>
-                <UiButtonWrapper>
-                  <img src={searchIco} alt="search" />
-                </UiButtonWrapper>
-              </li> */}
               <li>
                 {!isAuthed ? (
                   <UiButtonWrapper onClick={() => setIsAuthOpen()}>
-                    <img src={accountIco} alt="account" />
+                    <img src={accountIco} alt="account" className="header__navbar-account" />
                   </UiButtonWrapper>
                 ) : (
                   <Link to="/profile">
-                    <img src={accountIco} alt="account" />
+                    <img src={accountIco} alt="account" className="header__navbar-account" />
                   </Link>
                 )}
               </li>
               <li>
                 {!isAuthed ? (
                   <UiButtonWrapper onClick={() => setIsAuthOpen()}>
-                    <img src={productsIco} alt="account" />
+                    <img src={favIco} alt="account" className="header__navbar-fav" />
+                  </UiButtonWrapper>
+                ) : (
+                  <Link to="/profile">
+                    <img src={favIco} alt="account" className="header__navbar-fav" />
+                  </Link>
+                )}
+              </li>
+              <li>
+                {!isAuthed ? (
+                  <UiButtonWrapper onClick={() => setIsAuthOpen()}>
+                    <img src={productsIco} alt="bag" className="header__navbar-bag" />
                   </UiButtonWrapper>
                 ) : (
                   <UiButtonWrapper onClick={() => setIsBagOpen()}>
-                    <img src={productsIco} alt="bag" />
+                    <img src={productsIco} alt="bag" className="header__navbar-bag" />
                   </UiButtonWrapper>
                 )}
               </li>

@@ -5,11 +5,9 @@ import { WidgetGenderNav } from '../../../widgets/gender-nav';
 
 export const Landing: FC = () => {
   return (
-    <div className="landing">
-      <div className="landing__wrapper">
-        <h1 className="visually-hidden">Noir - пространство авангардной моды.</h1>
-        <WidgetGenderNav />
-      </div>
-    </div>
+    <>
+      <h1 className="visually-hidden">Angel - пространство авангардной моды.</h1>
+      <WidgetGenderNav />
+    </>
   );
 };

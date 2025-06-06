@@ -9,8 +9,6 @@ export { default as emptyHeart } from './ui/icons/heart-empty.svg';
 export { default as firstWoman } from './ui/img/wmn1.png';
 export { default as secondWoman } from './ui/img/wmn2.png';
 export { default as thirdWoman } from './ui/img/wmn3.jpg';
-export { default as landingWoman } from './ui/img/land-wmn.png';
-export { default as landingMan } from './ui/img/land-man.png';
 export { default as firstShopImg } from './ui/img/shop1.png';
 export { default as secondShopImg } from './ui/img/shop2.png';
 export { default as womanProducts } from './ui/img/woman-products.png';

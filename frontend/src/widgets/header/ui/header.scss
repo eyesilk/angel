@@ -6,16 +6,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 66px;
-  min-height: 66px;
-  border-bottom: 2px solid $eerie;
-  background: linear-gradient(to top, white, #999799 95%);
+  height: 78px;
+  min-height: 78px;
   height: 66px;
 
   @media (max-width: 1100px) {
     height: 50px;
     min-height: 50px;
   }
+
   @media (max-width: 450px) {
     height: 45px;
     min-height: 45px;
@@ -23,6 +22,7 @@
 
   &_transparent {
     background: transparent;
+
     @media (max-width: 1100px) {
       background-color: #ffffff;
     }
@@ -36,56 +36,89 @@
     max-width: 1440px;
   }
 
-  &__logo > img {
+  &__logo>img {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 134px;
+    width: 93px;
     height: auto;
 
     @media (max-width: 1100px) {
-      width: 100px;
+      width: 70px;
     }
+
     @media (max-width: 450px) {
-      width: 64px;
+      width: 50px;
     }
   }
 
   &__burger-button {
     & img {
-      width: 34px;
+      width: 20px;
       height: auto;
 
       @media (max-width: 1100px) {
-        width: 25px;
+        width: 16px;
       }
+
       @media (max-width: 450px) {
-        width: 22px;
+        width: 13px;
       }
     }
   }
 
-  &__navbar > ul {
+  &__navbar>ul {
     display: flex;
+    justify-content: space-between;
+    align-items: center;
     column-gap: 22px;
+
     @media (max-width: 1100px) {
       column-gap: 16px;
     }
+
     @media (max-width: 450px) {
       column-gap: 10 px;
     }
+  }
 
-    & img {
-      width: 18px;
-      height: auto;
+  &__navbar-bag {
+    width: 25px;
+    height: auto;
 
-      @media (max-width: 1100px) {
-        width: 14px;
-      }
-      @media (max-width: 450px) {
-        width: 10px;
-      }
+    @media (max-width: 1100px) {
+      width: 16px;
+    }
+
+    @media (max-width: 450px) {
+      width: 12px;
+    }
+  }
+
+  &__navbar-fav {
+    width: 24px;
+    height: auto;
+
+    @media (max-width: 1100px) {
+      width: 15px;
+    }
+
+    @media (max-width: 450px) {
+      width: 11px;
+    }
+  }
+
+  &__navbar-account {
+    width: 21px;
+    height: auto;
+
+    @media (max-width: 1100px) {
+      width: 14px;
+    }
+
+    @media (max-width: 450px) {
+      width: 10px;
     }
   }
 
@@ -94,6 +127,7 @@
     top: 0;
     z-index: 4;
     width: 100%;
+
     @media (max-width: 810px) {
       left: 0;
     }
@@ -102,32 +136,39 @@
   &__popup-enter {
     opacity: 0;
     top: -281px;
+
     @media (max-width: 810px) {
       top: 0;
       left: -281px;
     }
   }
+
   &__popup-enter-active {
     opacity: 1;
     top: 0px;
     transition: all 200ms;
+
     @media (max-width: 810px) {
       top: 0;
       left: 0;
     }
   }
+
   &__popup-exit {
     opacity: 1;
     top: 0px;
+
     @media (max-width: 810px) {
       top: 0;
       left: 0;
     }
   }
+
   &__popup-exit-active {
     opacity: 0;
     top: -281px;
     transition: all 200ms;
+
     @media (max-width: 810px) {
       top: 0;
       left: -281px;
