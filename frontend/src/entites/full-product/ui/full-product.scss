@@ -1,0 +1,210 @@
+@use '../../../shared/assets/ui/styles/variables.scss' as *;
+
+.ent-full-product {
+  display: flex;
+  max-width: 1440px;
+  justify-content: space-between;
+  width: 100%;
+  margin: 30px 0;
+  transition: opacity 0.15s ease;
+  @media (max-width: 840px) {
+    flex-direction: column-reverse;
+  }
+
+  &__wrapper {
+    width: 100%;
+  }
+
+  & img {
+    max-width: 735px;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    margin-bottom: 100px;
+    @media (max-width: 1350px) {
+      max-width: 600px;
+    }
+    @media (max-width: 1100px) {
+      max-width: 550px;
+    }
+    @media (max-width: 1000px) {
+      max-width: 500px;
+    }
+    @media (max-width: 920px) {
+      max-width: 450px;
+    }
+    @media (max-width: 880px) {
+      max-width: 430px;
+    }
+    @media (max-width: 840px) {
+      max-width: 1440px;
+      margin-bottom: 20px;
+    }
+  }
+
+  &__descr {
+    width: 100%;
+    margin-right: 20px;
+    text-transform: uppercase;
+    font-size: 20px;
+    padding-top: 20px;
+    @media (max-width: 1100px) {
+      font-size: 16px;
+    }
+    @media (max-width: 920px) {
+      margin-bottom: 100px;
+    }
+    @media (max-width: 500px) {
+      font-size: 13px;
+    }
+
+    & > div {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 15px;
+      @media (max-width: 1100px) {
+        margin-bottom: 10px;
+      }
+
+      & > h1 {
+        font-size: 30px;
+        @media (max-width: 1100px) {
+          font-size: 25px;
+        }
+        @media (max-width: 500px) {
+          font-size: 20px;
+        }
+      }
+
+      & img {
+        cursor: pointer;
+        width: 24px;
+        margin: 0;
+        @media (max-width: 1100px) {
+          width: 21px;
+        }
+        @media (max-width: 500px) {
+          width: 18px;
+        }
+      }
+    }
+
+    & > h2 {
+      color: $stardust;
+      margin-bottom: 30px;
+      @media (max-width: 1100px) {
+        margin-bottom: 25px;
+      }
+      @media (max-width: 500px) {
+        margin-bottom: 20px;
+      }
+    }
+
+    & > h3 {
+      font-size: 25px;
+      margin-bottom: 50px;
+      @media (max-width: 1100px) {
+        font-size: 20px;
+        margin-bottom: 40px;
+      }
+      @media (max-width: 500px) {
+        font-size: 16px;
+        margin-bottom: 30px;
+      }
+    }
+
+    & > h4 {
+      padding-bottom: 20px;
+      @media (max-width: 1100px) {
+        padding-bottom: 15px;
+      }
+      @media (max-width: 500px) {
+        padding-bottom: 10px;
+      }
+    }
+
+    & ul {
+      display: flex;
+      flex-direction: column;
+      row-gap: 15px;
+      padding: 20px 0;
+      border-bottom: 1px solid $eerie;
+      border-top: 1px solid $eerie;
+      margin-bottom: 50px;
+      @media (max-width: 1100px) {
+        margin-bottom: 40px;
+      }
+      @media (max-width: 500px) {
+        row-gap: 10px;
+        padding: 10px 0;
+        margin-bottom: 20px;
+      }
+
+      & > li {
+        & span {
+          font-size: 20px;
+
+          @media (max-width: 1100px) {
+            font-size: 16px;
+          }
+          @media (max-width: 500px) {
+            font-size: 15px;
+          }
+        }
+      }
+    }
+
+    & > details {
+      margin-top: 30px;
+      cursor: pointer;
+
+      & > summary {
+        display: flex;
+        list-style: none;
+        justify-content: space-between;
+        padding-bottom: 15px;
+        border-bottom: 1px solid $eerie;
+
+        &::-webkit-details-marker {
+          display: none;
+        }
+
+        @media (max-width: 1100px) {
+          padding-bottom: 10px;
+        }
+
+        & img {
+          width: 12px;
+          transition: all 0.15s ease;
+          margin: 0;
+          @media (max-width: 1100px) {
+            width: 10px;
+          }
+        }
+      }
+
+      & > p,
+      span {
+        font-size: 18px;
+        color: $stardust;
+        @media (max-width: 1100px) {
+          font-size: 14px;
+        }
+        @media (max-width: 500px) {
+          font-size: 12px;
+        }
+      }
+    }
+
+    & > details[open] {
+      & > summary {
+        border: 0;
+
+        & img {
+          transform: rotate(90deg);
+        }
+      }
+    }
+  }
+}

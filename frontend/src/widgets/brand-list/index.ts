@@ -1,0 +1,1 @@
+export { BrandList as WidgetBrandList } from './ui/BrandList'

@@ -1,0 +1,1 @@
+export { Bag as WidgetBag } from './ui/Bag';

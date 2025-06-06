@@ -1,0 +1,1 @@
+export { ProfileSettings as WidgetProfileSettings } from './ui/ProfileSettings'

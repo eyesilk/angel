@@ -1,0 +1,1 @@
+export { FullProduct as WidgetFullProduct } from './ui/FullProduct'

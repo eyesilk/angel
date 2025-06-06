@@ -1,0 +1,19 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "src/server.ts",
+      "use": "@vercel/node",
+      "config": {
+        "installCommand": "npm install --legacy-peer-deps",
+        "buildCommand": "npx prisma generate && npm run start",
+        "startCommand": "npm run start"
+      }
+    },
+    {
+      "src": "src/**/*",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [{ "src": "/(.*)", "dest": "src/" }]
+}

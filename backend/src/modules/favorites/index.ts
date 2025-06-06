@@ -1,0 +1,1 @@
+export { favoriteRouter } from './routes/favorite.routes'

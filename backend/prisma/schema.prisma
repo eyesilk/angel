@@ -1,0 +1,126 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+enum GenderEnum {
+  Муж
+  Жен
+  Уни
+}
+
+enum CategoryEnum {
+  Верх
+  Низ
+  Платья
+  Обувь
+  Сумки
+  Украшения
+  Аксессуары
+}
+
+enum ColorEnum {
+  Черный
+  Белый
+  Серый
+  Бежевый
+  Красный
+  Голубой
+}
+
+enum RoleEnum {
+  ADMIN
+  CUSTOMER
+}
+
+model Brand {
+  id              String    @id @default(auto()) @map("_id") @db.ObjectId
+  name            String
+  description     String
+  imageUrl        String
+  landingImageUrl String?
+  products        Product[]
+}
+
+model Product {
+  id            String         @id @default(auto()) @map("_id") @db.ObjectId
+  name          String
+  price         Int
+  sizes         String[]
+  description   String
+  country       String
+  composition   String
+  instructions  String
+  gender        GenderEnum
+  category      CategoryEnum
+  color         ColorEnum
+  imageUrl      String
+  brand         Brand          @relation(fields: [brandId], references: [id])
+  brandId       String         @db.ObjectId
+  cartItems     CartItem[]
+  favoriteItems FavoriteItem[]
+  views         Int            @default(0)
+}
+
+model User {
+  id             String    @id @default(auto()) @map("_id") @db.ObjectId
+  username       String
+  email          String    @unique
+  passwordHash   String
+  isActivated    Boolean
+  activationLink String    @unique
+  role           RoleEnum  @default(CUSTOMER)
+  cart           Cart?
+  favorite       Favorite?
+  newEmail       String?
+  token          Token[]
+}
+
+model Token {
+  id           String @id @default(auto()) @map("_id") @db.ObjectId
+  refreshToken String @unique
+  user         User   @relation(fields: [userId], references: [id])
+  userId       String @db.ObjectId
+}
+
+model Cart {
+  id        String     @id @default(auto()) @map("_id") @db.ObjectId
+  user      User       @relation(fields: [userId], references: [id])
+  userId    String     @unique @db.ObjectId
+  cartItems CartItem[]
+}
+
+model CartItem {
+  id        String  @id @default(auto()) @map("_id") @db.ObjectId
+  quantity  Int     @default(1)
+  product   Product @relation(fields: [productId], references: [id])
+  productId String  @db.ObjectId
+  cart      Cart    @relation(fields: [cartId], references: [id])
+  size      String
+  imageUrl  String
+  name      String
+  price     Int
+  cartId    String  @db.ObjectId
+
+  @@unique([cartId, productId, size]) 
+}
+
+
+model Favorite {
+  id            String         @id @default(auto()) @map("_id") @db.ObjectId
+  user          User           @relation(fields: [userId], references: [id])
+  userId        String         @unique @db.ObjectId
+  favoriteItems FavoriteItem[]
+}
+
+model FavoriteItem {
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  product    Product  @relation(fields: [productId], references: [id])
+  productId  String   @db.ObjectId
+  favorite   Favorite @relation(fields: [favoriteId], references: [id])
+  favoriteId String   @db.ObjectId
+}

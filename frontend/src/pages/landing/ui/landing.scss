@@ -1,0 +1,9 @@
+.landing {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__wrapper {
+    max-width: 1440px;
+  }
+}

@@ -1,0 +1,76 @@
+@use '../../../shared/assets/ui/styles/variables.scss' as *;
+
+.single-product {
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+
+  &__image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid $eerie;
+    overflow: hidden;
+    margin-bottom: 20px;
+    aspect-ratio: 302/351;
+
+    @media (max-width: 1100px) {
+      margin-bottom: 15px;
+    }
+    @media (max-width: 520px) {
+      margin-bottom: 12px;
+    }
+
+
+    & > img {
+      padding: 20px;
+      width: 100%;
+      height: 100%;
+      max-width: 305px;
+      object-fit: scale-down;
+      transition: opacity 0.15s ease;
+
+      @media (max-width: 1100px) {
+        padding: 15px;
+      }
+      @media (max-width: 650px) {
+        padding: 10px;
+      }
+
+      &:hover {
+        opacity: 0.7;
+      }
+    }
+  }
+  &__name,
+  &__price {
+    font-size: 18px;
+    text-transform: uppercase;
+    transition: opacity 0.15s ease;
+
+    @media (max-width: 1100px) {
+      font-size: 14px;
+    }
+    @media (max-width: 520px) {
+      font-size: 10px;
+    }
+    @media (max-width: 340px) {
+      font-size: 8px;
+    }
+    
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+  &__name {
+    margin-bottom: 15px;
+
+    @media (max-width: 1100px) {
+      margin-bottom: 10px;
+    }
+    
+  }
+}

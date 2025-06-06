@@ -1,0 +1,35 @@
+@use '../../../shared/assets/ui/styles/variables.scss' as *;
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: auto;
+  margin-bottom: 30px;
+  @media (max-width: 600px) {
+    margin-bottom: 20px;
+  }
+
+  & a {
+    padding: 10px;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-size: 22px;
+    color: $stardust;
+
+    @media (max-width: 1100px) {
+      font-size: 17px;
+    }
+    @media (max-width: 600px) {
+      font-size: 13px;
+      padding: 5px;
+    }
+  }
+}
+
+.selected {
+  & a {
+    color: $eerie;
+  }
+}
+

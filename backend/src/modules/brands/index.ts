@@ -1,0 +1,1 @@
+export { brandRouter } from './routes/brand.routes'

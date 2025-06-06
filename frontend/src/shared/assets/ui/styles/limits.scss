@@ -1,0 +1,13 @@
+.limits {
+  padding-left: 81px;
+  padding-right: 81px;
+
+  @media (max-width: 1100px) {
+    padding-left: 61px;
+    padding-right: 61px;
+  }
+  @media (max-width: 650px) {
+    padding-left: 21px;
+    padding-right: 21px;
+  }
+}

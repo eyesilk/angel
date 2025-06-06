@@ -1,0 +1,77 @@
+@use '../../../shared/assets/ui/styles/variables.scss' as *;
+
+@keyframes skeleton-loading {
+  0% {
+    background-position: -100%;
+  }
+  100% {
+    background-position: 100%;
+  }
+}
+
+.skeleton {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  border-right: 1px solid $eerie;
+  padding-right: 15px;
+  padding-bottom: 5px;
+
+  @media (max-width: 650px) {
+    padding-right: 0;
+    border: none;
+    padding-bottom: 17px;
+  }
+
+  &__image,
+  &__name {
+    background: linear-gradient(90deg, $bonjour 0%, lighten($bonjour, 8%) 50%, $bonjour 100%);
+    background-size: 200% 100%;
+    animation: skeleton-loading 2s infinite linear;
+    border-radius: 4px;
+  }
+
+  &__image {
+    width: 718px;
+    height: 195px;
+
+    @media (max-width: 1200px) {
+      width: 600px;
+      height: 163px;
+    }
+    @media (max-width: 980px) {
+      width: 450px;
+      height: 122px;
+    }
+    @media (max-width: 850px) {
+      width: 365px;
+      height: 98px;
+    }
+    @media (max-width: 700px) {
+      width: 325px;
+      height: 88px;
+    }
+    @media (max-width: 650px) {
+      width: 100%;
+      height: 164px;
+    }
+  }
+
+  &__name {
+    width: 300px;
+    height: 40px;
+
+    @media (max-width: 1100px) {
+      width: 200px;
+      height: 30px;
+    }
+    @media (max-width: 850px) {
+      width: 150px;
+      height: 20px;
+    }
+    @media (max-width: 650px) {
+      display: none;
+    }
+  }
+}

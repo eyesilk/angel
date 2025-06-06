@@ -1,0 +1,1 @@
+export { BrandProducts as PageBrandProducts}  from './ui/BrandProducts' 
