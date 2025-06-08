@@ -59,7 +59,6 @@ export const ProductList: FC<ProductListProps> = ({
   return (
     <section className="product-list">
       <div className="product-list__wrapper limits">
-        <FiltersAside />
         <div className="product-list__products">
           <FilterMenu />
           {isLoading || !products ? (
