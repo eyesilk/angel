@@ -27,11 +27,11 @@ export const Pagination: FC<PaginationProps> = ({ totalPages }) => {
     <ReactPaginate
       className="pagination"
       breakLabel="..."
-      nextLabel=">"
+      nextLabel="→"
       onPageChange={(e) => setNewPage(e)}
       pageRangeDisplayed={2}
       pageCount={totalPages / 10}
-      previousLabel="<"
+      previousLabel="←"
       renderOnZeroPageCount={null}
       forcePage={Number(searchParams.get('page')) - 1}
     />

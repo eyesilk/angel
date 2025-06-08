@@ -3,10 +3,10 @@ import { useProducts } from '../../../features/products/api/hooks/useProducts';
 import { EntSingleProduct, ESPSkeleton } from '../../../entites/single-product';
 import './product-list.scss';
 import { FilterMenu } from './FilterMenu';
-import { FiltersAside } from './FiltersAside';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { Pagination } from './Pagination';
 import { useUrlPaginate } from '../lib/useUrlPaginate';
+import { FiltersAside } from './FiltersAside';
 
 interface ProductListProps {
   brandId?: string | null;

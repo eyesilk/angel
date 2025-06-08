@@ -32,7 +32,9 @@ export const Footer: FC = () => {
             <ul>
               {links.map((item, index) => (
                 <li key={index}>
-                  <a href={item.link}>{item.name}</a>
+                  <a href={item.link} target="_blank">
+                    {item.name}
+                  </a>
                 </li>
               ))}
             </ul>

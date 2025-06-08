@@ -1,14 +1,11 @@
 import { Dispatch, FC, RefObject, SetStateAction, useRef } from 'react';
 import '../../../shared/assets/ui/styles/limits.scss';
 import './popup-nav.scss';
-import { UiButtonArrow } from '../../../shared/button-arrow';
 import { Link } from 'react-router-dom';
 import { useDisableScroll } from '../lib/useDisableScroll';
-
 import { useBrandList } from '../../../features/brands';
 import { useCategories } from '../../../features/categories';
 import { usePopupOutside } from '../../../shared/utils';
-import { UiButtonGray } from '../../../shared/button-gray';
 import { UiLoader } from '../../../shared/loader';
 
 interface PopupNavProps {
@@ -17,14 +14,13 @@ interface PopupNavProps {
   btnRef: RefObject<HTMLButtonElement | null>;
 }
 
+const contacts: { name: string; path: string }[] = [
+  { name: 'Youtube', path: 'https://youtube.com' },
+  { name: 'TikTok', path: 'https://tiktok.com' },
+  { name: 'Telegram', path: 'https://web.telegram.org/' },
+];
+
 export const PopupNav: FC<PopupNavProps> = ({ setIsPopupOpen, isPopupOpen, btnRef }) => {
-  const navDefault: { name: string; path: string }[] = [
-    { name: 'О нас', path: '' },
-    { name: 'Доставка', path: 'delivery' },
-    { name: 'Youtube', path: 'https://youtube.com' },
-    { name: 'TikTok', path: 'https://tiktok.com' },
-    { name: 'Telegram', path: 'https://web.telegram.org/' },
-  ];
   const popupRef = useRef<HTMLElement>(null);
 
   const {
@@ -38,7 +34,7 @@ export const PopupNav: FC<PopupNavProps> = ({ setIsPopupOpen, isPopupOpen, btnRe
   const isError: boolean = isErrorCategories || isErrorBrands;
 
   const brands = data?.slice(0, 4) || [];
-  const navProducts = categoryData?.categories.slice(0, 4) || [];
+  const navProducts = categoryData?.categories.slice(0, 2) || [];
 
   useDisableScroll(isPopupOpen);
   usePopupOutside(popupRef, btnRef, setIsPopupOpen);
@@ -47,58 +43,60 @@ export const PopupNav: FC<PopupNavProps> = ({ setIsPopupOpen, isPopupOpen, btnRe
       <div className="nav-popup__wrapper limits">
         {brands && navProducts && !isLoading && !isError ? (
           <>
-            <div className="nav-popup__list">
-              <UiButtonArrow onClick={() => setIsPopupOpen(false)}>
-                <Link to="/man/products">Мужская одежда</Link>
-              </UiButtonArrow>{' '}
-              <ul className="nav-popup__products">
-                {navProducts.map((item, index) => (
-                  <li key={index} className="nav-popup__item">
-                    <UiButtonGray onClick={() => setIsPopupOpen(false)}>
-                      <Link to={`/man/products?category=${item}`}>{item}</Link>
-                    </UiButtonGray>
-                  </li>
-                ))}
-              </ul>
+            <div>
+              <div className="nav-popup__list">
+                <button className="nav-popup__button-title" onClick={() => setIsPopupOpen(false)}>
+                  <Link to="/man/products">Мужчинам</Link>
+                </button>{' '}
+                <ul className="nav-popup__products">
+                  {navProducts.map((item, index) => (
+                    <li key={index} className="nav-popup__item">
+                      <button
+                        className="nav-popup__button-subtitle"
+                        onClick={() => setIsPopupOpen(false)}
+                      >
+                        <Link to={`/man/products?category=${item}&page=1`}>{item}</Link>
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className="nav-popup__list">
+                <button className="nav-popup__button-title" onClick={() => setIsPopupOpen(false)}>
+                  <Link to="/woman/products">Женщинам</Link>
+                </button>
+                <ul className="nav-popup__products">
+                  {navProducts.map((item, index) => (
+                    <li key={index} className="nav-popup__item">
+                      <button
+                        className="nav-popup__button-subtitle"
+                        onClick={() => setIsPopupOpen(false)}
+                      >
+                        <Link to={`/woman/products?category=${item}&page=1`}>{item}</Link>
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className="nav-popup__list">
+                <span className="nav-popup__list-title">Контакты</span>
+                <ul className="nav-popup__products">
+                  {contacts.map((item, index) => (
+                    <li key={index} className="nav-popup__item">
+                      <button
+                        className="nav-popup__button-subtitle"
+                        onClick={() => setIsPopupOpen(false)}
+                      >
+                        <a href={item.path} target="_blank">
+                          {item.name}
+                        </a>
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
-            <div className="nav-popup__list">
-              <UiButtonArrow onClick={() => setIsPopupOpen(false)}>
-                <Link to="/woman/products">Женская одежда</Link>
-              </UiButtonArrow>
-              <ul className="nav-popup__products">
-                {navProducts.map((item, index) => (
-                  <li key={index} className="nav-popup__item">
-                    <UiButtonGray onClick={() => setIsPopupOpen(false)}>
-                      <Link to={`/woman/products?category=${item}`}>{item}</Link>
-                    </UiButtonGray>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="nav-popup__list">
-              <UiButtonArrow onClick={() => setIsPopupOpen(false)}>
-                <Link to="/brands">Все бренды</Link>
-              </UiButtonArrow>
-              <ul className="nav-popup__products">
-                {brands.map((item) => (
-                  <li key={item.id} className="nav-popup__item">
-                    <UiButtonGray onClick={() => setIsPopupOpen(false)}>
-                      <Link to={`/brand/${item.id}`}>{item.name}</Link>
-                    </UiButtonGray>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <ul className="nav-popup__list-about">
-              {navDefault.map((nav, index) => (
-                <li key={index} className="nav-popup__item-about">
-                  <UiButtonGray onClick={() => setIsPopupOpen(false)}>
-                    <Link to={`/${nav.path}`}>{nav.name}</Link>{' '}
-                  </UiButtonGray>
-                </li>
-              ))}
-            </ul>
+            <span className="nav-popup__title">Меню</span>
           </>
         ) : (
           <div className="nav-popup__loader">

@@ -3,8 +3,6 @@ import { useAuthStore, useLoginSubmit, useRegisterSubmit } from '../../../featur
 import { useModalOutside, useRemoveScroll } from '../../../shared/utils';
 import './auth.scss';
 import { UiButtonCross } from '../../../shared/button-cross';
-import { UiButtonGray } from '../../../shared/button-gray';
-import { UiButtonDefault } from '../../../shared/button-default';
 import { UiDotsLoader } from '../../../shared/dots-loader';
 import { CSSTransition } from 'react-transition-group';
 

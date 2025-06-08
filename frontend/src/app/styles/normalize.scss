@@ -184,3 +184,8 @@ input {
   text-decoration: none;
   color: $eerie;
 }
+
+::selection {
+  background-color: $eerie;
+  color: #fafafa;
+}
