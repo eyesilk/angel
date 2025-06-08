@@ -1,19 +1,22 @@
 @use '../../../shared/assets/ui/styles/variables.scss' as *;
 
 .sort-popup {
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
   position: absolute;
   background-color: #ffffff;
-  top: 0;
+  top: 1;
   right: 0;
   z-index: 4;
-  border: 1px solid $eerie;
   padding: 20px;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.15);
+
   @media(max-width: 850px) {
     padding: 15px;
   }
+
   @media(max-width: 520px) {
     border-right: 0;
     border-top: 0;
@@ -25,22 +28,25 @@
     width: 16px;
     height: 16px;
     transition: all 0.3s ease-in-out;
+
     @media(max-width: 1100px) {
       width: 13px;
       height: 13px;
       margin-bottom: 18px;
     }
+
     @media(max-width: 850px) {
       width: 10px;
       height: 10px;
       margin-bottom: 10px;
     }
+
     @media(max-width: 520px) {
       display: none;
     }
 
     &:hover {
-        transform: rotate(180deg);
+      transform: rotate(180deg);
     }
   }
 
@@ -50,10 +56,12 @@
     align-items: flex-start;
     row-gap: 13px;
     margin-right: 44px;
+
     @media(max-width: 850px) {
       row-gap: 10px;
       margin-right: 20px;
     }
+
     @media(max-width: 520px) {
       margin-right: 0;
     }
@@ -75,9 +83,11 @@
       @media(max-width: 1100px) {
         font-size: 14px;
       }
+
       @media(max-width: 850px) {
         font-size: 12px;
       }
+
       @media(max-width: 520px) {
         font-size: 10px;
       }

@@ -1,67 +1,50 @@
 import { FC } from 'react';
-import { logo } from '../../../shared/assets';
 import './footer.scss';
-import { UiButtonContinue } from '../../../shared/button-continue';
 import '../../../shared/assets/ui/styles/limits.scss';
 import { Link } from 'react-router-dom';
 
+const relationShip: { name: string; link: string }[] = [
+  { name: 'Оферта', link: '/connect' },
+  { name: 'Политика', link: '/delivery' },
+  { name: 'Конфиденциальности', link: '/conf' },
+];
+
+const links: { name: string; link: string }[] = [
+  { name: 'Telegram', link: 'https://web.telegram.org/' },
+  { name: 'Youtube', link: 'https://youtube.com' },
+  { name: 'Tiktok', link: 'https://tiktok.com' },
+];
+
 export const Footer: FC = () => {
-  const relationShip: { name: string; link: string }[] = [
-    { name: 'Связаться с нами', link: '/connect' },
-    { name: 'Доставка', link: '/delivery' },
-    { name: 'Возврат', link: '/return' },
-    { name: 'Условия обслуживания', link: '/rules' },
-  ];
-
-  const links: { name: string; link: string }[] = [
-    { name: 'О нас', link: '/' },
-    { name: 'Telegram', link: 'https://web.telegram.org/' },
-    { name: 'Youtube', link: 'https://youtube.com' },
-    { name: 'Tiktok', link: 'https://tiktok.com' },
-  ]; 
-
   return (
     <footer className="footer">
       <div className="footer__wrapper limits">
-        <div className="footer__logo-wrapper">
-          <div className="footer__logo">
-            <img src={logo} alt="noir logo" />
+        <div className="footer__mail">
+          <span>Подписаться на рассылку</span>
+          <p>Подпишитесь на нашу рассылку, чтобы получать последние новости и обновления.</p>
+          <div className="footer__input-wrapper">
+            <input placeholder="EMAIL" />
+            <button>Отправить</button>
           </div>
         </div>
-        <div className="footer__information">
+        <div className="footer__thirdparty">
           <div className="footer__links">
-            <div className="footer__list">
-              <span>Поддержка клиентов</span>
-              <ul>
-                {relationShip.map((item) => (
-                  <li key={item.link}>
-                    <Link to={item.link}>{item.name}</Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div className="footer__list">
-              <span>Ссылки</span>
-              <ul>
-                {links.map((item) => (
-                  <li key={item.link}>
-                    <Link to={item.link}>{item.name}</Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
+            <ul>
+              {links.map((item, index) => (
+                <li key={index}>
+                  <a href={item.link}>{item.name}</a>
+                </li>
+              ))}
+            </ul>
+            <ul>
+              {relationShip.map((item, index) => (
+                <li key={index}>
+                  <Link to={item.link}>{item.name}</Link>
+                </li>
+              ))}
+            </ul>
           </div>
-          <div className="footer__mail">
-            <span>Подписаться на рассылку</span>
-            <UiButtonContinue>
-              <input type="text" placeholder="noir@gmail.com" className="footer__mail-input" />
-            </UiButtonContinue>
-          </div>
-          <div className="footer__address">
-            <span className='footer__address-string'>
-              Москва, Россия <span>©</span> 2025, noir.
-            </span>
-          </div>
+          <span className="footer__address">Moscow, russia © 2025, angl</span>
         </div>
       </div>
     </footer>
