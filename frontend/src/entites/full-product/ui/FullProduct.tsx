@@ -1,14 +1,12 @@
 import { FC, useState } from 'react';
 import { formatPrice } from '../../../shared/utils';
 import './full-product.scss';
-import { UiButtonGray } from '../../../shared/button-gray';
-import { arrowIco, emptyHeart, heartSolid } from '../../../shared/assets';
+import { arrowIco, heartSolid } from '../../../shared/assets';
+import emptyHeart from '/assets/icons/favorite.svg';
 import { UiButtonWrapper } from '../../../shared/button-wrapper';
-import { UiButtonDefault } from '../../../shared/button-default';
 
 interface FullProductProps {
   id: string;
-  brandName: string;
   name: string;
   imageUrl: string;
   price: number;
@@ -29,7 +27,6 @@ interface FullProductProps {
 
 export const FullProduct: FC<FullProductProps> = ({
   id,
-  brandName,
   name,
   imageUrl,
   price,
@@ -53,48 +50,21 @@ export const FullProduct: FC<FullProductProps> = ({
   return (
     <div className="ent-full-product limits" style={{ opacity: isImageLoad ? 0 : 1 }}>
       <div className="ent-full-product__descr">
-        <div>
-          <h1>{brandName}</h1>
-          <UiButtonWrapper onClick={ isAuthed ? () => onFav() : () => setIsAuthOpen()}>
-            {!isFav ? (
-              <img src={emptyHeart} alt="empty heart" />
-            ) : (
-              <img src={heartSolid} alt="solid heart" />
-            )}
-          </UiButtonWrapper>
-        </div>
-
-        <h2>{name}</h2>
+        <h1>{name}</h1>
         <h3>{formatPrice(price)}</h3>
-        <h4>Размеры</h4>
 
         <ul>
           {sizes.map((size, index) => (
             <li key={index}>
-              <UiButtonGray active={size === selectedSize} onClick={() => setSelectedSize(size)}>
+              <button
+                className={`button-size ${size === selectedSize && 'button-size-active'}`}
+                onClick={() => setSelectedSize(size)}
+              >
                 {size}
-              </UiButtonGray>
+              </button>
             </li>
           ))}
         </ul>
-        {!isAdded(selectedSize) ? (
-          <UiButtonDefault
-            onCLick={
-              isAuthed
-                ? () => onAdd(id, selectedSize, imageUrl, name, price)
-                : () => setIsAuthOpen()
-            }
-          >
-            Добавить в корзину
-          </UiButtonDefault>
-        ) : (
-          <UiButtonDefault
-            onCLick={() => onIncr(id, selectedSize, imageUrl, name, price)}
-            color="black"
-          >
-            Добавлено в корзину: {quantity(selectedSize)}
-          </UiButtonDefault>
-        )}
 
         <details>
           <summary>
@@ -115,6 +85,34 @@ export const FullProduct: FC<FullProductProps> = ({
           </summary>
           <p>{instructions}</p>
         </details>
+        <div className="ent-full-product__add-buttons">
+          {!isAdded(selectedSize) ? (
+            <button
+              className="button-add"
+              onClick={
+                isAuthed
+                  ? () => onAdd(id, selectedSize, imageUrl, name, price)
+                  : () => setIsAuthOpen()
+              }
+            >
+              Добавить в корзину
+            </button>
+          ) : (
+            <button
+              className="button-add"
+              onClick={() => onIncr(id, selectedSize, imageUrl, name, price)}
+            >
+              Добавлено в корзину: {quantity(selectedSize)}
+            </button>
+          )}
+          <UiButtonWrapper onClick={isAuthed ? () => onFav() : () => setIsAuthOpen()}>
+            {!isFav ? (
+              <img src={emptyHeart} alt="empty heart" />
+            ) : (
+              <img src={heartSolid} alt="solid heart" />
+            )}
+          </UiButtonWrapper>
+        </div>
       </div>
       <img
         src={imageUrl}

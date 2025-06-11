@@ -112,13 +112,13 @@
     }
   }
 
-  &__loader {
+  &__loader-wrapper {
+    width: 100%;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     padding-bottom: 50px;
-    width: 100%;
-    height: 100%;
   }
 
   &__button-title {
@@ -219,4 +219,9 @@
       opacity: 0.6;
     }
   }
+}
+
+.loading {
+  width: 0%;
+  margin-right: 60px;
 }

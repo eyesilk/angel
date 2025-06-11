@@ -20,9 +20,10 @@ export const FullProduct: FC = () => {
   const bagProducts = useBagStore((state) => state.bagProducts);
   const isAuthed = useAuthStore((state) => state.isAuthed);
   const setIsAuthOpen = useAuthStore((state) => state.setIsAuthOpen);
-  const totalQuantity = (size: string) => bagProducts
-    .filter((item) => item.productId === params.id && item.size === size)
-    .reduce((sum, item) => sum + item.quantity, 0);
+  const totalQuantity = (size: string) =>
+    bagProducts
+      .filter((item) => item.productId === params.id && item.size === size)
+      .reduce((sum, item) => sum + item.quantity, 0);
 
   const { data: product, isError, isLoading } = useSingleProduct(params.id!);
 
@@ -35,7 +36,6 @@ export const FullProduct: FC = () => {
       {product && !isError && !isLoading ? (
         <EntFullProduct
           id={product.id}
-          brandName={product.brand!.name}
           name={product.name!}
           imageUrl={product.imageUrl!}
           price={product.price}

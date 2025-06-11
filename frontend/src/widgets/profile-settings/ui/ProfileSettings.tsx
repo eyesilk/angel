@@ -37,22 +37,25 @@ export const ProfileSettings: FC = () => {
   };
 
   return (
-    <div className="profile limits">
-      <span className="profile__welcomes">Привет, {userData?.username}</span>
-      <section className="profile__section">
-        <ul className="profile__tabs">
+    <div className="profile-settings limits">
+      <span className="profile-settings__welcomes">Привет, {userData?.username}</span>
+      <section className="profile-settings__section">
+        <ul className="profile-settings__tabs">
           <li>
-            <ButtonGray
+            <button
+              className={`profile-settings__button ${currentTab === 'favorites' && 'profile-settings__button_active'}`}
               onClick={() => handleTabChange('favorites')}
-              active={currentTab === 'favorites'}
             >
               Избранное
-            </ButtonGray>
+            </button>
           </li>
           <li>
-            <ButtonGray onClick={() => handleTabChange('safety')} active={currentTab === 'safety'}>
+            <button
+              className={`profile-settings__button ${currentTab === 'safety' && 'profile-settings__button_active'}`}
+              onClick={() => handleTabChange('safety')}
+            >
               Безопасность
-            </ButtonGray>
+            </button>
           </li>
         </ul>
         {tabs[currentTab] || <Favorites />}

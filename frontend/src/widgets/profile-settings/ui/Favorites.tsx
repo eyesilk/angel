@@ -11,7 +11,9 @@ export const Favorites: FC = () => {
 
   return (
     <div className="favorites">
-      {favItems && favItems?.length > 0 && <UiButtonWrapper onClick={clearFav}>Отчистить корзину</UiButtonWrapper>}
+      {favItems && favItems?.length > 0 && (
+        <UiButtonWrapper onClick={clearFav}>Отчистить корзину</UiButtonWrapper>
+      )}
       {isPending || isLoading || !favItems ? (
         <div className="favorites__grid">
           {[...new Array(10)].map((_, index) => (

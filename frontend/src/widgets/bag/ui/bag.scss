@@ -1,57 +1,62 @@
 @use '../../../shared/assets/ui/styles/variables.scss' as *;
 
 .bag {
-  position: absolute;
+  position: fixed;
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: center;
   top: 0;
   left: 0;
   z-index: 6;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: #ffffff;
 
   &__wrapper {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width: 602px;
+    width: 100%;
     height: 100%;
     z-index: 7;
     background-color: #ffffff;
-    padding: 25px 81px 25px 30px;
+    padding: 25px 80px;
+    max-width: 1440px;
 
     @media (max-width: 1100px) {
-      padding: 20px 50px 20px 25px;
-      width: 450px;
+      padding: 20px 40px;
     }
 
-    @media (max-width: 500px) {
-      padding: 10px 20px;
-      width: 320px;
+    @media (max-width: 650px) {
+      padding: 20px 15px;
     }
   }
 
   &__title {
     display: flex;
     justify-content: space-between;
-    padding-bottom: 20px;
-    border-bottom: 2px solid $eerie;
+    align-items: flex-start;
+    padding-bottom: 35px;
+    line-height: 70px;
+
     @media (max-width: 1100px) {
-      padding-bottom: 15px;
+      padding-bottom: 30px;
     }
 
+
     & span {
-      font-size: 35px;
+      font-size: 100px;
+      font-weight: 900;
       text-transform: uppercase;
       color: $eerie;
 
       @media (max-width: 1100px) {
-        font-size: 30px;
+        font-size: 70px;
+        line-height: 50px;
       }
-      @media (max-width: 1100px) {
-        font-size: 20px;
+
+      @media (max-width: 650px) {
+        font-size: 35px;
       }
     }
   }
@@ -60,13 +65,8 @@
     width: 25px;
     height: 25px;
 
-    @media (max-width: 1100px) {
+    @media (max-width: 650px) {
       width: 20px;
-      height: 20px;
-    }
-    @media (max-width: 500px) {
-      width: 15px;
-      height: 15px;
     }
   }
 
@@ -83,17 +83,41 @@
     font-size: 20px;
     margin-bottom: 30px;
     padding-top: 20px;
-    border-top: 1px solid $eerie;
+
+    & span,
+    button {
+      text-transform: uppercase;
+      font-size: 30px;
+      font-weight: 700;
+
+      @media (max-width: 1100px) {
+        font-size: 25px;
+      }
+
+      @media (max-width: 650px) {
+        font-size: 15px;
+      }
+    }
+
+    & button {
+      font-weight: 800;
+      padding-top: 10;
+      border-top: 2px solid $eerie;
+      transition: all 0.15s ease;
+
+      &:hover {
+        opacity: 0.8;
+      }
+    }
 
     @media (max-width: 1100px) {
-      font-size: 18px;
-      margin-bottom: 20px;
-      padding-top: 15px;
+      margin-bottom: 10px;
+      padding-top: 20px;
     }
-    @media (max-width: 1100px) {
-      font-size: 15px;
-      margin-bottom: 15px;
-      padding-top: 10px;
+
+    @media (max-width: 650px) {
+      margin-bottom: 5px;
+      padding-top: 15px;
     }
   }
 
@@ -113,35 +137,20 @@
 
   &__animate-enter {
     opacity: 0;
-    position: absolute;
-    right: -602px;
-    @media (max-width: 1100px) {
-      right: -450px;
-    }
-    @media (max-width: 500px) {
-      right: -320px;
-    }
   }
+
   &__animate-enter-active {
     opacity: 1;
-    right: 0px;
     transition: all 200ms;
   }
+
   &__animate-exit {
-    position: absolute;
-    opacity: 1;
-    right: 0px;
-    top: 0px;
+    opacity: 0;
+    transition: all 200ms;
   }
+
   &__animate-exit-active {
     opacity: 0;
     transition: all 200ms;
-    right: -602px;
-    @media (max-width: 1100px) {
-      right: -450px;
-    }
-    @media (max-width: 500px) {
-      right: -320px;
-    }
   }
 }

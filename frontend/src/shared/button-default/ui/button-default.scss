@@ -1,18 +1,19 @@
 @use '../../assets/ui/styles/variables.scss' as *;
 
 .button-default {
-  font-size: 20px;
+  font-size: 25px;
+  font-weight: 700;
   text-transform: uppercase;
-  padding-top: 23px;
+  padding-top: 15px;
   padding-bottom: 23px;
-  border: 1px solid $eerie;
   background-color: #ffffff;
-  width: 100%;
+  width: fit-content;
   color: $eerie;
   transition:
     color 0.15s ease,
     background-color 0.15s ease;
   cursor: pointer;
+  border-top: 1px solid $eerie;
 
   @media (max-width: 1100px) {
     font-size: 16px;
@@ -27,50 +28,46 @@
   }
 
   &:hover {
-    background-color: $eerie;
-    color: #ffffff;
+    opacity: 0.8;
   }
 
   &:disabled {
-    background-color: $eerie;
-    color: #888;
-    border: 1px solid #bbb;
+    text-decoration: none;
+    opacity: 0.8;
     cursor: not-allowed;
-    pointer-events: none;
+    border: none;
   }
 
   &--white {
     background-color: #ffffff;
     color: $eerie;
-    border: 1px solid $eerie;
 
     &:hover {
-      background-color: $eerie;
-      color: #ffffff;
+      opacity: 0.8;
     }
 
     &:disabled {
-      background-color: $eerie;
-      color: #888;
-      border: 1px solid #bbb;
+      text-decoration: none;
+      opacity: 0.8;
+      cursor: not-allowed;
+      border: none;
     }
   }
 
   &--black {
     background-color: $eerie;
     color: #ffffff;
-    border: 1px solid #ffffff;
 
     &:hover {
       background-color: #ffffff;
       color: $eerie;
-      border: 1px solid $eerie;
     }
 
     &:disabled {
-      color: #888;
-      color: $eerie;
-      border: 1px solid #bbb;
+      text-decoration: none;
+      opacity: 0.8;
+      cursor: not-allowed;
+      border: none;
     }
   }
 
@@ -78,9 +75,9 @@
     background-color: $bonjour;
 
     &:disabled {
-      background-color: $bonjour;
+      color: #888;
       color: $eerie;
-      border: 1px solid $eerie;
+      border: none;
     }
   }
 }

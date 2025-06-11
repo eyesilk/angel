@@ -4,7 +4,6 @@ import { useBag, useBagFuncs, useBagStore, useRefetchBag } from '../../../featur
 import { formatPrice, useModalOutside, useRemoveScroll } from '../../../shared/utils';
 import { UiButtonCross } from '../../../shared/button-cross';
 import { EBPSkeleton, EntBagProduct } from '../../../entites/bag-product';
-import { UiButtonDefault } from '../../../shared/button-default';
 import { useAuthStore } from '../../../features/auth';
 import { CSSTransition } from 'react-transition-group';
 
@@ -54,10 +53,10 @@ export const Bag: FC = () => {
         nodeRef={bagRef}
         unmountOnExit
       >
-        <div className="bag">
-          <div className="bag__wrapper" ref={bagRef}>
+        <div className="bag" ref={bagRef}>
+          <div className="bag__wrapper">
             <div className="bag__title">
-              <span>Корзина</span>
+              <span>Корзина ({bag.reduce((accum, item) => (accum += item.quantity), 0) || 0})</span>
               <div className="bag__cross">
                 <UiButtonCross onClick={() => setIsBagOpen()} />
               </div>
@@ -87,14 +86,14 @@ export const Bag: FC = () => {
               )}
             </div>
             <div className="bag__price">
-              <span>Всего:</span>
               <span>
+                Итого:{' '}
                 {formatPrice(
                   bag.reduce((accum, item) => (accum += item.price * item.quantity), 0) || 0,
                 )}
               </span>
+              <button>Купить</button>
             </div>
-            <UiButtonDefault>Продолжить</UiButtonDefault>
           </div>
         </div>
       </CSSTransition>

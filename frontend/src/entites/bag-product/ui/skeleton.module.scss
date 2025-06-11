@@ -2,6 +2,7 @@
   0% {
     background-position: -200% 0;
   }
+
   100% {
     background-position: 200% 0;
   }
@@ -15,8 +16,8 @@
   width: 100%;
 
   &__image {
-    aspect-ratio: 152/199;
-    max-width: 152px;
+    aspect-ratio: 305/368;
+    max-width: 305px;
     width: 100%;
     height: auto;
     background-color: #e0e0e0;
@@ -26,10 +27,11 @@
     animation: shimmer 1.5s infinite linear;
 
     @media (max-width: 1100px) {
-      max-width: 130px;
+      max-width: 250px;
     }
+
     @media (max-width: 500px) {
-      max-width: 100px;
+      max-width: 200px;
     }
   }
 
@@ -47,10 +49,12 @@
     background-image: linear-gradient(90deg, #e0e0e0 25%, #f5f5f5 50%, #e0e0e0 75%);
     background-size: 200% 100%;
     animation: shimmer 1.5s infinite linear;
+
     @media (max-width: 1100px) {
       margin-bottom: 10px;
       height: 15px;
     }
+
     @media (max-width: 500px) {
       height: 12px;
     }
@@ -64,9 +68,11 @@
     background-image: linear-gradient(90deg, #e0e0e0 25%, #f5f5f5 50%, #e0e0e0 75%);
     background-size: 200% 100%;
     animation: shimmer 1.5s infinite linear;
+
     @media (max-width: 1100px) {
       height: 15px;
     }
+
     @media (max-width: 500px) {
       height: 12px;
     }

@@ -1,7 +1,8 @@
 import { FC } from 'react';
 import './bag-product.scss';
 import { formatPrice } from '../../../shared/utils';
-import { minus, plus } from '../../../shared/assets';
+import minus from '/assets/icons/minus.svg';
+import plus from '/assets/icons/plus.svg';
 import { UiButtonWrapper } from '../../../shared/button-wrapper';
 import { UiButtonCross } from '../../../shared/button-cross';
 
@@ -44,18 +45,20 @@ export const BagProduct: FC<BagProductProps> = ({
             </div>
           </div>
 
-          <span>{formatPrice(price)}</span>
           <span className="bag-product__size">{size}</span>
         </div>
 
-        <span className="bag-product__button">
-          <UiButtonWrapper onClick={() => onDecr(id, size, count)}>
-            <img src={minus} alt="remove one" />
-          </UiButtonWrapper>
-          <span>{count}</span>
-          <UiButtonWrapper onClick={() => onIncr(id, size, imageUrl, name, price)}>
-            <img src={plus} alt="add one" />
-          </UiButtonWrapper>
+        <span className="bag-product__footer">
+          <span>{formatPrice(price)}</span>
+          <div className="bag-product__button">
+            <UiButtonWrapper onClick={() => onDecr(id, size, count)}>
+              <img src={minus} alt="remove one" />
+            </UiButtonWrapper>
+            <span>{count}</span>
+            <UiButtonWrapper onClick={() => onIncr(id, size, imageUrl, name, price)}>
+              <img src={plus} alt="add one" />
+            </UiButtonWrapper>
+          </div>
         </span>
       </div>
     </div>

@@ -40,7 +40,7 @@ export const PopupNav: FC<PopupNavProps> = ({ setIsPopupOpen, isPopupOpen, btnRe
   usePopupOutside(popupRef, btnRef, setIsPopupOpen);
   return (
     <nav className="nav-popup" ref={popupRef}>
-      <div className="nav-popup__wrapper limits">
+      <div className={`nav-popup__wrapper limits ${(isLoading || isError) && 'loading'}`}>
         {brands && navProducts && !isLoading && !isError ? (
           <>
             <div>
@@ -99,7 +99,7 @@ export const PopupNav: FC<PopupNavProps> = ({ setIsPopupOpen, isPopupOpen, btnRe
             <span className="nav-popup__title">Меню</span>
           </>
         ) : (
-          <div className="nav-popup__loader">
+          <div className="nav-popup__loader-wrapper">
             <UiLoader />
           </div>
         )}

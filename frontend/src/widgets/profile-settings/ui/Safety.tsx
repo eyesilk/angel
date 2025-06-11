@@ -26,28 +26,28 @@ export const Safety: FC = () => {
     state: boolean;
     popup: ReactNode;
   }[] = [
-    {
-      title: 'Имя',
-      value: userData?.username!, 
-      func: setIsChangeName,
-      state: isChangeName,
-      popup: <UsernameChange onClose={setIsChangeName}/>,
-    },
-    {
-      title: 'Email',
-      value: userData?.email!,
-      func: setIsChangeEmail,
-      state: isChangeEmail,
-      popup: <EmailChange onClose={setIsChangeEmail}/>,
-    },
-    {
-      title: 'Пароль',
-      value: '*******',
-      func: setIsChangePass,
-      state: isChangePass,
-      popup: <PasswordChange onClose={setIsChangePass}/>,
-    },
-  ];
+      {
+        title: 'Имя',
+        value: userData?.username!,
+        func: setIsChangeName,
+        state: isChangeName,
+        popup: <UsernameChange onClose={setIsChangeName} />,
+      },
+      {
+        title: 'Email',
+        value: userData?.email!,
+        func: setIsChangeEmail,
+        state: isChangeEmail,
+        popup: <EmailChange onClose={setIsChangeEmail} />,
+      },
+      {
+        title: 'Пароль',
+        value: '*******',
+        func: setIsChangePass,
+        state: isChangePass,
+        popup: <PasswordChange onClose={setIsChangePass} />,
+      },
+    ];
 
   useRemoveScroll(isPopupOpen);
   return (
@@ -64,13 +64,15 @@ export const Safety: FC = () => {
             </li>
           ))}
         </ul>
-        {isPending ? (
-          <UiButtonDefault disabled>
-            <DotsLoader color="white"></DotsLoader>
-          </UiButtonDefault>
-        ) : (
-          <UiButtonDefault onCLick={mutate}>Выйти из аккаунта</UiButtonDefault>
-        )}
+        <div className="safety__button">
+          {isPending ? (
+            <UiButtonDefault disabled>
+              <DotsLoader color="black"></DotsLoader>
+            </UiButtonDefault>
+          ) : (
+            <UiButtonDefault onCLick={mutate}>Выйти из аккаунта</UiButtonDefault>
+          )}
+        </div>
       </div>
       {safetyParams.map((param) => param.state && param.popup)}
     </>
