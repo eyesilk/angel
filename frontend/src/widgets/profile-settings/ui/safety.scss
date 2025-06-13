@@ -13,6 +13,18 @@
     align-items: center;
     justify-content: center;
     width: 100%;
+
+    @media (max-width: 650px) {
+      margin-top: 40px;
+    }
+
+    @media (max-width: 450px) {
+      margin-top: 30px;
+
+      & button {
+        font-size: 10px;
+      }
+    }
   }
 
   &__info {
@@ -28,7 +40,7 @@
     }
 
     @media (max-width: 450px) {
-      font-size: 15px;
+      font-size: 10px;
     }
 
     &>li {

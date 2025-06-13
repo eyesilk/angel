@@ -27,11 +27,17 @@
     @media (max-width: 650px) {
       row-gap: 25px;
       column-gap: 10px;
+      min-height: 400px;
     }
 
     @media (max-width: 450px) {
-      row-gap: 20px;
+      row-gap: 10px;
       column-gap: 8px;
+    }
+
+    a {
+      display: block;
+      height: fit-content;
     }
   }
 
@@ -50,8 +56,8 @@
     }
 
     @media (max-width: 450px) {
-      font-size: 12px;
-      margin-bottom: 10px;
+      font-size: 10px;
+      margin-bottom: 5px;
     }
   }
 

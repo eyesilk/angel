@@ -19,24 +19,28 @@ export const PasswordChange: FC<ChangeProps> = ({ onClose }) => {
         <span className="change__title">Изменение пароля</span>
         {message && <span className="change__error">{message}</span>}
         <form className="change__input-box" onSubmit={(e) => handleChangePassword(e)}>
-          <label htmlFor="password">Старый пароль</label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            required
-            value={password}
-            onChange={(e: ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
-          />
-          <label htmlFor="newPassword">Новый пароль</label>
-          <input
-            type="newPassword"
-            id="newPassword"
-            name="newPassword"
-            required
-            value={newPassword}
-            onChange={(e: ChangeEvent<HTMLInputElement>) => setNewPassword(e.target.value)}
-          />
+          <div className="change__input-wrapper">
+            <label htmlFor="password">Старый пароль</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              required
+              value={password}
+              onChange={(e: ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
+            />
+          </div>
+          <div className="change__input-wrapper">
+            <label htmlFor="newPassword">Новый пароль</label>
+            <input
+              type="newPassword"
+              id="newPassword"
+              name="newPassword"
+              required
+              value={newPassword}
+              onChange={(e: ChangeEvent<HTMLInputElement>) => setNewPassword(e.target.value)}
+            />
+          </div>
           <div className="change__buttons">
             <UiButtonDefault type="button" onCLick={() => onClose(false)}>
               Отмена
