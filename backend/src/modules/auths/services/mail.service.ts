@@ -1,4 +1,7 @@
 import nodemailer, { TransportOptions } from 'nodemailer';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 class MailSevice {
   transporter;
