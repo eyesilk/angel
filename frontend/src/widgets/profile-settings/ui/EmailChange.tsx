@@ -19,24 +19,28 @@ export const EmailChange: FC<ChangeProps> = ({ onClose }) => {
         <span className="change__title">Изменение почты</span>
         {message && <span className="change__error">{message}</span>}
         <form className="change__input-box" onSubmit={(e) => handleChangeEmail(e)}>
-          <label htmlFor="email">Новая почта</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            required
-            value={password}
-            onChange={(e: ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
-          />
-          <label htmlFor="password">Пароль</label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            required
-            value={email}
-            onChange={(e: ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
-          />
+          <div className="change__input-wrapper">
+            <label htmlFor="email">Новая почта</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              required
+              value={password}
+              onChange={(e: ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
+            />
+          </div>
+          <div className="change__input-wrapper">
+            <label htmlFor="password">Пароль</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              required
+              value={email}
+              onChange={(e: ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
+            />
+          </div>
           <div className="change__buttons">
             <UiButtonDefault type="button" onCLick={() => onClose(false)}>
               Отмена

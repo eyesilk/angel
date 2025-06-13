@@ -19,15 +19,17 @@ export const UsernameChange: FC<ChangeProps> = ({ onClose }) => {
         <span className="change__title">Изменение имени</span>
         {message && <span className="change__error">{message}</span>}
         <form className="change__input-box" onSubmit={(e) => handleChangeName(e)}>
-          <label htmlFor="username">Новое имя</label>
-          <input
-            type="username"
-            id="username"
-            name="username"
-            required
-            value={username}
-            onChange={(e: ChangeEvent<HTMLInputElement>) => setUsername(e.target.value)}
-          />
+          <div className="change__input-wrapper">
+            <label htmlFor="username">Новое имя</label>
+            <input
+              type="username"
+              id="username"
+              name="username"
+              required
+              value={username}
+              onChange={(e: ChangeEvent<HTMLInputElement>) => setUsername(e.target.value)}
+            />
+          </div>
           <div className="change__buttons">
             <UiButtonDefault type="button" onCLick={() => onClose(false)}>
               Отмена

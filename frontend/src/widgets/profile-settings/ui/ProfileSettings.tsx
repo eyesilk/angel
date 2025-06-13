@@ -1,7 +1,6 @@
 import { FC, ReactNode, useEffect } from 'react';
 import { useAuthStore } from '../../../features/auth';
 import './profile-settings.scss';
-import { ButtonGray } from '../../../shared/button-gray/ui/ButtonGray';
 import { Favorites } from './Favorites';
 import { Safety } from './Safety';
 import { useNavigate, useSearchParams } from 'react-router-dom';
