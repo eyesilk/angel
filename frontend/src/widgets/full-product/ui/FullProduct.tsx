@@ -40,10 +40,8 @@ export const FullProduct: FC = () => {
           imageUrl={product.imageUrl!}
           price={product.price}
           sizes={product.sizes!}
-          description={product.description!}
           composition={product.composition!}
           instructions={product.instructions!}
-          country={product.country!}
           onAdd={onAdd}
           onIncr={onIncr}
           isAdded={isSizeAdded}

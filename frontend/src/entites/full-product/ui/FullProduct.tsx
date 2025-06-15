@@ -11,10 +11,8 @@ interface FullProductProps {
   imageUrl: string;
   price: number;
   sizes: string[];
-  description: string;
   composition: string;
   instructions: string;
-  country: string;
   onAdd: (...args: any[]) => any;
   onIncr: (...args: any[]) => any;
   isAdded: (size: string) => boolean;
@@ -31,10 +29,8 @@ export const FullProduct: FC<FullProductProps> = ({
   imageUrl,
   price,
   sizes,
-  description,
   composition,
   instructions,
-  country,
   onAdd,
   onIncr,
   isAdded,
@@ -66,13 +62,6 @@ export const FullProduct: FC<FullProductProps> = ({
           ))}
         </ul>
 
-        <details>
-          <summary>
-            Описание <img src={arrowIco} alt="arrow" />
-          </summary>
-          <p>{description}</p>
-          <span>Страна производства: {country}</span>
-        </details>
         <details>
           <summary>
             Состав <img src={arrowIco} alt="arrow" />

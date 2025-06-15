@@ -16,7 +16,7 @@ export const GenderNav: FC = () => {
       <ul className="gender-nav__list">
         {genders.map((gender, index) => (
           <li key={index} className="gender-nav__item">
-            <Link to={`/${gender.gender === 'Мужчинам' ? 'man' : 'woman'}/products`}>
+            <Link to={`/${gender.gender === 'Мужчинам' ? 'man' : 'woman'}/products?page=1`}>
               <img src={gender.imageUrl} alt={`${gender.gender}`} />
               <span className={`gender-nav__item-title ${gender.pos}`}>{gender.gender}</span>
             </Link>

@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import './not-found.scss';
-import { logo } from '../../../shared/assets';
+import logo from '/assets/icons/logo.svg';
 import { UiButtonDefault } from '../../../shared/button-default';
 import { Link } from 'react-router-dom';
 
