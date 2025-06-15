@@ -12,7 +12,7 @@ export const Favorites: FC = () => {
   return (
     <div className="favorites">
       {favItems && favItems?.length > 0 && (
-        <UiButtonWrapper onClick={clearFav}>Отчистить корзину</UiButtonWrapper>
+        <UiButtonWrapper onClick={clearFav}>Отчистить</UiButtonWrapper>
       )}
       {isPending || isLoading || !favItems ? (
         <div className="favorites__grid">
