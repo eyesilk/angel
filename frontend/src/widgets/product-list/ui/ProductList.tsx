@@ -6,7 +6,6 @@ import { FilterMenu } from './FilterMenu';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { Pagination } from './Pagination';
 import { useUrlPaginate } from '../lib/useUrlPaginate';
-import { FiltersAside } from './FiltersAside';
 
 interface ProductListProps {
   brandId?: string | null;
