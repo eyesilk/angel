@@ -1,20 +1,21 @@
-import { FC, useEffect } from 'react';
+import { Dispatch, forwardRef, SetStateAction, useEffect } from 'react';
 import { useCategories } from '../../../features/categories';
 import { useNavigate, useParams } from 'react-router-dom';
 import './filters-aside.scss';
 import { ButtonGray } from '../../../shared/button-gray/ui/ButtonGray';
 import { useUrlFilter } from '../lib/useUrlFilter';
-import { useBrandList } from '../../../features/brands';
+import { UiButtonCross } from '../../../shared/button-cross';
 
-export const FiltersAside: FC = () => {
-  const navigate = useNavigate()
+interface FilterAsideProps {
+  setToggle: Dispatch<SetStateAction<boolean>>;
+}
+export const FiltersAside = forwardRef<HTMLDivElement, FilterAsideProps>(({ setToggle }, ref) => {
+  const navigate = useNavigate();
   const { searchParams, handleUrlFilter } = useUrlFilter();
   const params = useParams<{ id: string; gender: string }>();
   const id: string = searchParams.get('brandId') || params.id || params.gender!;
 
   const { data: filters, isError } = useCategories(id);
-
-  const { data: brands } = useBrandList(params.gender && params.gender === 'man' ? 'Муж' : 'Жен');
 
   const handleFilter = (key: string, value: string): void => {
     handleUrlFilter(key, value);
@@ -27,7 +28,10 @@ export const FiltersAside: FC = () => {
   }, [isError]);
 
   return (
-    <aside className="filters-aside">
+    <div className="filters-aside" ref={ref}>
+      <div className="filters-aside__cross">
+        <UiButtonCross onClick={() => setToggle(false)} />
+      </div>
       <div className="filters-aside__filter">
         <span>Категория</span>
         <ul className="filters-aside__list">
@@ -60,24 +64,6 @@ export const FiltersAside: FC = () => {
             ))}
         </ul>
       </div>
-      {!params.id && (
-        <div className="filters-aside__filter">
-          <span>Бренд</span>
-          <ul className="filters-aside__list">
-            {brands &&
-              brands.map((brand) => (
-                <li key={brand.id}>
-                  <ButtonGray
-                    onClick={() => handleFilter('brandId', brand.id as string)}
-                    active={searchParams.get('brandId') === brand.id}
-                  >
-                    {brand.name}
-                  </ButtonGray>
-                </li>
-              ))}
-          </ul>
-        </div>
-      )}
-    </aside>
+    </div>
   );
-};
+});
